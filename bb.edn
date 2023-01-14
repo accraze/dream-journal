@@ -1,1 +1,7 @@
-{:paths ["src"]}
+{:paths ["src"]
+ :min-bb-version "0.4.0"
+ :tasks {:requires ([babashka.fs :as fs]
+                    [dream-journal.list :as list])
+         clear (fs/delete-if-exists "entries.edn")
+         list   (list/list-entries nil)
+         add (exec "dream-journal.add/add-entry")}}
