@@ -1,0 +1,10 @@
+* dream-journal
+** usage
+#+begin_src sh
+bb -m dream-journal.main
+ add
+   -e, --entry     Your dreams.
+   -t, --timestamp A unix timestamp, when you recorded this.
+#+end_src
+
+#+RESULTS:

@@ -1,7 +1,6 @@
-#!/usr/bin/env bb
-
-(require '[babashka.cli :as cli])
-(require '[dream-journal.add :as add])
+(ns dream-journal.main
+  (:require [babashka.cli :as cli]
+           [dream-journal.add :as add]))
 
 (def cli-opts
   {:entry    {:alias  :e
@@ -18,7 +17,8 @@
       (cli/format-opts {:spec cli-opts}))))
 
 (def table
-  [{:cmds ["add"] :fn add-entry :spec cli-opts}
+  [{:cmds ["add"] :fn add/add-entry :spec cli-opts}
    {:cmds [] :fn help}])
 
-(cli/dispatch table *command-line-args*)
+(defn -main [& _args]
+  (cli/dispatch table *command-line-args*))
