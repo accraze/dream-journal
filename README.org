@@ -1,4 +1,5 @@
 * dream-journal
+working through babooka and the babashka docs
 ** usage
 #+begin_src sh
 bb -m dream-journal.main
