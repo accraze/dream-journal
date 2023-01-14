@@ -1,6 +1,7 @@
 (ns dream-journal.main
   (:require [babashka.cli :as cli]
-           [dream-journal.add :as add]))
+           [dream-journal.add :as add]
+           [dream-journal.list :as dlist]))
 
 (def cli-opts
   {:entry    {:alias  :e
@@ -17,8 +18,8 @@
       (cli/format-opts {:spec cli-opts}))))
 
 (def table
-  [{:cmds ["add"] :fn add/add-entry :spec cli-opts}
-   {:cmds [] :fn help}])
+  [{:cmds ["add"] :fn #(add/add-entry (:opts %)) :spec cli-opts}
+   {:cmds ["list"] :fn dlist/list-entries }])
 
 (defn -main [& _args]
   (cli/dispatch table *command-line-args*))
